@@ -11,7 +11,6 @@ export type AuthProviderProps = PropsWithChildren;
 export function AuthProvider(props: AuthProviderProps) {
   const [firebaseUser, setFirebaseUser] =
     useState<AuthContextValue["firebaseUser"]>(undefined);
-  const firebaseUserLoading = firebaseUser === undefined;
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -21,13 +20,19 @@ export function AuthProvider(props: AuthProviderProps) {
     return unsubscribe;
   }, []);
 
-  const value: AuthContextValue = useMemo(
-    () => ({
-      firebaseUser,
-      firebaseUserLoading,
-    }),
-    [firebaseUser, firebaseUserLoading],
-  );
+  const value: AuthContextValue = useMemo(() => {
+    if (firebaseUser === undefined) {
+      return {
+        firebaseUser,
+        firebaseUserLoading: true,
+      };
+    } else {
+      return {
+        firebaseUser,
+        firebaseUserLoading: false,
+      };
+    }
+  }, [firebaseUser]);
 
   return <AuthContext.Provider value={value} {...props} />;
 }
