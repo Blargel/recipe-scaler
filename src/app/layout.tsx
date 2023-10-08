@@ -5,10 +5,11 @@ import "@fontsource/roboto/700.css";
 import type { Metadata } from "next";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 
 import { AuthProvider } from "@/contexts/auth/AuthProvider";
-import styles from "./layout.module.css";
 import { TopBar } from "@/components/TopBar";
+import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
   title: "Henry's Shady Recipe Scaling",
@@ -26,8 +27,8 @@ export default function RootLayout({
         <CssBaseline />
         <AuthProvider>
           <TopBar />
-          <Container>
-            <main className={styles.main}>{children}</main>
+          <Container maxWidth="lg">
+            <Box paddingTop={12}>{children}</Box>
           </Container>
         </AuthProvider>
       </body>

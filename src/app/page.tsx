@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import Typography from "@mui/material/Typography";
 
 const LoginUI = dynamic(() => import("@/components/LoginUI"), { ssr: false });
-
 import { useAuth } from "@/contexts/auth/useAuth";
 
 export default function Home() {
@@ -21,7 +20,9 @@ export default function Home() {
   } else {
     return (
       <>
-        <Typography variant="h3">Henry&apos;s Shady Recipe Scaling</Typography>
+        <Typography variant="h3" align="center">
+          Henry&apos;s Shady Recipe Scaling
+        </Typography>
         <LoginUI />
       </>
     );

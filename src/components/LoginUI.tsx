@@ -1,13 +1,13 @@
 "use client";
 
+import { useEffect } from "react";
 import firebase from "firebase/compat/app";
 import * as firebaseui from "firebaseui";
 import "firebaseui/dist/firebaseui.css";
-import { auth } from "../firebase";
-import { useEffect } from "react";
+
+import { auth } from "@/firebase";
 
 const uiConfig = {
-  signInSuccessUrl: "/",
   signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
   signInFlow: "popup",
 };

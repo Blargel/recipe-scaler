@@ -1,5 +1,5 @@
-import { redirect, usePathname } from "next/navigation";
 import { useCallback } from "react";
+import { redirect, usePathname } from "next/navigation";
 
 export function useLoginRedirect() {
   const pathName = usePathname();
